@@ -6,6 +6,49 @@
 
 ### 2.1.2 Type Conversions
 
+```cpp
+bool b = 42;          // b is true
+int i = b;            // i has value 1
+i = 3.14;             // i has value 3
+double pi = i;        // pi has value 3.0
+unsigned char c = -1; // assuming 8-bit chars, c has value 255
+signed char c2 = 256; // assuming 8-bit chars, the value of c2 is undefined
+```
+
+```cpp
+int i = 42;
+if (i) // condition will evaluate as true
+    i = 0;
+```
+
+```cpp
+unsigned u = 10;
+int i = -42;
+std::cout << i + i << std::endl; // prints -84
+std::cout << u + i << std::endl; // if 32-bit ints, prints 4294967264
+```
+
+```cpp
+unsigned u1 = 42, u2 = 10;
+std::cout << u1 - u2 << std::endl; // ok: result is 32
+std::cout << u2 - u1 << std::endl; // ok: but the result will wrap around
+```
+
+```cpp
+// WRONG: u can never be less than 0; the condition will always succeed
+for (unsigned u = 10; u >= 0; --u)
+    std::cout << u << std::endl;
+```
+
+```cpp
+unsigned u = 11; // start the loop one past the first element we want to print
+while (u > 0)
+{
+    --u; // decrement first, so that the last iteration will print 0
+    std::cout << u << std::endl;
+}
+```
+
 ### 2.1.3 Literals
 
 ## 2.2 Variables
